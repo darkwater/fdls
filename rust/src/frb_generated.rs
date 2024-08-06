@@ -37,7 +37,7 @@ flutter_rust_bridge::frb_generated_boilerplate!(
     default_rust_auto_opaque = RustAutoOpaqueMoi,
 );
 pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_VERSION: &str = "2.1.0";
-pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = -1918914929;
+pub(crate) const FLUTTER_RUST_BRIDGE_CODEGEN_CONTENT_HASH: i32 = 1132917429;
 
 // Section: executor
 
@@ -45,37 +45,7 @@ flutter_rust_bridge::frb_generated_default_handler!();
 
 // Section: wire_funcs
 
-fn wire__crate__api__simple__greet_impl(
-    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
-    rust_vec_len_: i32,
-    data_len_: i32,
-) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
-        flutter_rust_bridge::for_generated::TaskInfo {
-            debug_name: "greet",
-            port: None,
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
-        },
-        move || {
-            let message = unsafe {
-                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
-                    ptr_,
-                    rust_vec_len_,
-                    data_len_,
-                )
-            };
-            let mut deserializer =
-                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
-            let api_name = <String>::sse_decode(&mut deserializer);
-            deserializer.end();
-            transform_result_sse::<_, ()>((move || {
-                let output_ok = Result::<_, ()>::Ok(crate::api::simple::greet(api_name))?;
-                Ok(output_ok)
-            })())
-        },
-    )
-}
-fn wire__crate__api__simple__init_app_impl(
+fn wire__crate__api__init__init_app_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
@@ -101,7 +71,71 @@ fn wire__crate__api__simple__init_app_impl(
             move |context| {
                 transform_result_sse::<_, ()>((move || {
                     let output_ok = Result::<_, ()>::Ok({
-                        crate::api::simple::init_app();
+                        crate::api::init::init_app();
+                    })?;
+                    Ok(output_ok)
+                })())
+            }
+        },
+    )
+}
+fn wire__crate__api__pipewire__pipewire_get_globals_impl(
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "pipewire_get_globals",
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            deserializer.end();
+            transform_result_sse::<_, ()>((move || {
+                let output_ok = Result::<_, ()>::Ok(crate::api::pipewire::pipewire_get_globals())?;
+                Ok(output_ok)
+            })())
+        },
+    )
+}
+fn wire__crate__api__pipewire__pipewire_send_msg_impl(
+    port_: flutter_rust_bridge::for_generated::MessagePort,
+    ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
+    rust_vec_len_: i32,
+    data_len_: i32,
+) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+        flutter_rust_bridge::for_generated::TaskInfo {
+            debug_name: "pipewire_send_msg",
+            port: Some(port_),
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+        },
+        move || {
+            let message = unsafe {
+                flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(
+                    ptr_,
+                    rust_vec_len_,
+                    data_len_,
+                )
+            };
+            let mut deserializer =
+                flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_msg = <crate::api::pipewire::PipeWireMsg>::sse_decode(&mut deserializer);
+            deserializer.end();
+            move |context| {
+                transform_result_sse::<_, ()>((move || {
+                    let output_ok = Result::<_, ()>::Ok({
+                        crate::api::pipewire::pipewire_send_msg(api_msg);
                     })?;
                     Ok(output_ok)
                 })())
@@ -110,13 +144,85 @@ fn wire__crate__api__simple__init_app_impl(
     )
 }
 
+// Section: static_checks
+
+#[allow(clippy::unnecessary_literal_unwrap)]
+const _: fn() = || match None::<crate::api::pipewire::ObjectType>.unwrap() {
+    crate::api::pipewire::ObjectType::Client => {}
+    crate::api::pipewire::ObjectType::ClientEndpoint => {}
+    crate::api::pipewire::ObjectType::ClientNode => {}
+    crate::api::pipewire::ObjectType::ClientSession => {}
+    crate::api::pipewire::ObjectType::Core => {}
+    crate::api::pipewire::ObjectType::Device => {}
+    crate::api::pipewire::ObjectType::Endpoint => {}
+    crate::api::pipewire::ObjectType::EndpointLink => {}
+    crate::api::pipewire::ObjectType::EndpointStream => {}
+    crate::api::pipewire::ObjectType::Factory => {}
+    crate::api::pipewire::ObjectType::Link => {}
+    crate::api::pipewire::ObjectType::Metadata => {}
+    crate::api::pipewire::ObjectType::Module => {}
+    crate::api::pipewire::ObjectType::Node => {}
+    crate::api::pipewire::ObjectType::Port => {}
+    crate::api::pipewire::ObjectType::Profiler => {}
+    crate::api::pipewire::ObjectType::Registry => {}
+    crate::api::pipewire::ObjectType::Session => {}
+    crate::api::pipewire::ObjectType::Other(field0) => {
+        let _: String = field0;
+    }
+};
+
 // Section: dart2rust
+
+impl SseDecode for std::collections::HashMap<String, String> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <Vec<(String, String)>>::sse_decode(deserializer);
+        return inner.into_iter().collect();
+    }
+}
 
 impl SseDecode for String {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         let mut inner = <Vec<u8>>::sse_decode(deserializer);
         return String::from_utf8(inner).unwrap();
+    }
+}
+
+impl SseDecode for crate::api::pipewire::GlobalObject {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_id = <u32>::sse_decode(deserializer);
+        let mut var_kind = <crate::api::pipewire::ObjectType>::sse_decode(deserializer);
+        let mut var_version = <u32>::sse_decode(deserializer);
+        let mut var_props = <std::collections::HashMap<String, String>>::sse_decode(deserializer);
+        return crate::api::pipewire::GlobalObject {
+            id: var_id,
+            kind: var_kind,
+            version: var_version,
+            props: var_props,
+        };
+    }
+}
+
+impl SseDecode for i32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode for Vec<crate::api::pipewire::GlobalObject> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<crate::api::pipewire::GlobalObject>::sse_decode(
+                deserializer,
+            ));
+        }
+        return ans_;
     }
 }
 
@@ -132,6 +238,115 @@ impl SseDecode for Vec<u8> {
     }
 }
 
+impl SseDecode for Vec<(String, String)> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut len_ = <i32>::sse_decode(deserializer);
+        let mut ans_ = vec![];
+        for idx_ in 0..len_ {
+            ans_.push(<(String, String)>::sse_decode(deserializer));
+        }
+        return ans_;
+    }
+}
+
+impl SseDecode for crate::api::pipewire::ObjectType {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut tag_ = <i32>::sse_decode(deserializer);
+        match tag_ {
+            0 => {
+                return crate::api::pipewire::ObjectType::Client;
+            }
+            1 => {
+                return crate::api::pipewire::ObjectType::ClientEndpoint;
+            }
+            2 => {
+                return crate::api::pipewire::ObjectType::ClientNode;
+            }
+            3 => {
+                return crate::api::pipewire::ObjectType::ClientSession;
+            }
+            4 => {
+                return crate::api::pipewire::ObjectType::Core;
+            }
+            5 => {
+                return crate::api::pipewire::ObjectType::Device;
+            }
+            6 => {
+                return crate::api::pipewire::ObjectType::Endpoint;
+            }
+            7 => {
+                return crate::api::pipewire::ObjectType::EndpointLink;
+            }
+            8 => {
+                return crate::api::pipewire::ObjectType::EndpointStream;
+            }
+            9 => {
+                return crate::api::pipewire::ObjectType::Factory;
+            }
+            10 => {
+                return crate::api::pipewire::ObjectType::Link;
+            }
+            11 => {
+                return crate::api::pipewire::ObjectType::Metadata;
+            }
+            12 => {
+                return crate::api::pipewire::ObjectType::Module;
+            }
+            13 => {
+                return crate::api::pipewire::ObjectType::Node;
+            }
+            14 => {
+                return crate::api::pipewire::ObjectType::Port;
+            }
+            15 => {
+                return crate::api::pipewire::ObjectType::Profiler;
+            }
+            16 => {
+                return crate::api::pipewire::ObjectType::Registry;
+            }
+            17 => {
+                return crate::api::pipewire::ObjectType::Session;
+            }
+            18 => {
+                let mut var_field0 = <String>::sse_decode(deserializer);
+                return crate::api::pipewire::ObjectType::Other(var_field0);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseDecode for crate::api::pipewire::PipeWireMsg {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::pipewire::PipeWireMsg::Print,
+            _ => unreachable!("Invalid variant for PipeWireMsg: {}", inner),
+        };
+    }
+}
+
+impl SseDecode for (String, String) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut var_field0 = <String>::sse_decode(deserializer);
+        let mut var_field1 = <String>::sse_decode(deserializer);
+        return (var_field0, var_field1);
+    }
+}
+
+impl SseDecode for u32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_u32::<NativeEndian>().unwrap()
+    }
+}
+
 impl SseDecode for u8 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -142,13 +357,6 @@ impl SseDecode for u8 {
 impl SseDecode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {}
-}
-
-impl SseDecode for i32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
-    }
 }
 
 impl SseDecode for bool {
@@ -167,7 +375,8 @@ fn pde_ffi_dispatcher_primary_impl(
 ) {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        2 => wire__crate__api__simple__init_app_impl(port, ptr, rust_vec_len, data_len),
+        1 => wire__crate__api__init__init_app_impl(port, ptr, rust_vec_len, data_len),
+        3 => wire__crate__api__pipewire__pipewire_send_msg_impl(port, ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
@@ -180,17 +389,137 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
-        1 => wire__crate__api__simple__greet_impl(ptr, rust_vec_len, data_len),
+        2 => wire__crate__api__pipewire__pipewire_get_globals_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
 
 // Section: rust2dart
 
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::pipewire::GlobalObject {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        [
+            self.id.into_into_dart().into_dart(),
+            self.kind.into_into_dart().into_dart(),
+            self.version.into_into_dart().into_dart(),
+            self.props.into_into_dart().into_dart(),
+        ]
+        .into_dart()
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pipewire::GlobalObject
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pipewire::GlobalObject>
+    for crate::api::pipewire::GlobalObject
+{
+    fn into_into_dart(self) -> crate::api::pipewire::GlobalObject {
+        self
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for FrbWrapper<crate::api::pipewire::ObjectType> {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self.0 {
+            crate::api::pipewire::ObjectType::Client => [0.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::ClientEndpoint => [1.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::ClientNode => [2.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::ClientSession => [3.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Core => [4.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Device => [5.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Endpoint => [6.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::EndpointLink => [7.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::EndpointStream => [8.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Factory => [9.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Link => [10.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Metadata => [11.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Module => [12.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Node => [13.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Port => [14.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Profiler => [15.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Registry => [16.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Session => [17.into_dart()].into_dart(),
+            crate::api::pipewire::ObjectType::Other(field0) => {
+                [18.into_dart(), field0.into_into_dart().into_dart()].into_dart()
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for FrbWrapper<crate::api::pipewire::ObjectType>
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<FrbWrapper<crate::api::pipewire::ObjectType>>
+    for crate::api::pipewire::ObjectType
+{
+    fn into_into_dart(self) -> FrbWrapper<crate::api::pipewire::ObjectType> {
+        self.into()
+    }
+}
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::pipewire::PipeWireMsg {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::Print => 0.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::pipewire::PipeWireMsg
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::pipewire::PipeWireMsg>
+    for crate::api::pipewire::PipeWireMsg
+{
+    fn into_into_dart(self) -> crate::api::pipewire::PipeWireMsg {
+        self
+    }
+}
+
+impl SseEncode for std::collections::HashMap<String, String> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <Vec<(String, String)>>::sse_encode(self.into_iter().collect(), serializer);
+    }
+}
+
 impl SseEncode for String {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         <Vec<u8>>::sse_encode(self.into_bytes(), serializer);
+    }
+}
+
+impl SseEncode for crate::api::pipewire::GlobalObject {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <u32>::sse_encode(self.id, serializer);
+        <crate::api::pipewire::ObjectType>::sse_encode(self.kind, serializer);
+        <u32>::sse_encode(self.version, serializer);
+        <std::collections::HashMap<String, String>>::sse_encode(self.props, serializer);
+    }
+}
+
+impl SseEncode for i32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for Vec<crate::api::pipewire::GlobalObject> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <crate::api::pipewire::GlobalObject>::sse_encode(item, serializer);
+        }
     }
 }
 
@@ -204,6 +533,115 @@ impl SseEncode for Vec<u8> {
     }
 }
 
+impl SseEncode for Vec<(String, String)> {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(self.len() as _, serializer);
+        for item in self {
+            <(String, String)>::sse_encode(item, serializer);
+        }
+    }
+}
+
+impl SseEncode for crate::api::pipewire::ObjectType {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        match self {
+            crate::api::pipewire::ObjectType::Client => {
+                <i32>::sse_encode(0, serializer);
+            }
+            crate::api::pipewire::ObjectType::ClientEndpoint => {
+                <i32>::sse_encode(1, serializer);
+            }
+            crate::api::pipewire::ObjectType::ClientNode => {
+                <i32>::sse_encode(2, serializer);
+            }
+            crate::api::pipewire::ObjectType::ClientSession => {
+                <i32>::sse_encode(3, serializer);
+            }
+            crate::api::pipewire::ObjectType::Core => {
+                <i32>::sse_encode(4, serializer);
+            }
+            crate::api::pipewire::ObjectType::Device => {
+                <i32>::sse_encode(5, serializer);
+            }
+            crate::api::pipewire::ObjectType::Endpoint => {
+                <i32>::sse_encode(6, serializer);
+            }
+            crate::api::pipewire::ObjectType::EndpointLink => {
+                <i32>::sse_encode(7, serializer);
+            }
+            crate::api::pipewire::ObjectType::EndpointStream => {
+                <i32>::sse_encode(8, serializer);
+            }
+            crate::api::pipewire::ObjectType::Factory => {
+                <i32>::sse_encode(9, serializer);
+            }
+            crate::api::pipewire::ObjectType::Link => {
+                <i32>::sse_encode(10, serializer);
+            }
+            crate::api::pipewire::ObjectType::Metadata => {
+                <i32>::sse_encode(11, serializer);
+            }
+            crate::api::pipewire::ObjectType::Module => {
+                <i32>::sse_encode(12, serializer);
+            }
+            crate::api::pipewire::ObjectType::Node => {
+                <i32>::sse_encode(13, serializer);
+            }
+            crate::api::pipewire::ObjectType::Port => {
+                <i32>::sse_encode(14, serializer);
+            }
+            crate::api::pipewire::ObjectType::Profiler => {
+                <i32>::sse_encode(15, serializer);
+            }
+            crate::api::pipewire::ObjectType::Registry => {
+                <i32>::sse_encode(16, serializer);
+            }
+            crate::api::pipewire::ObjectType::Session => {
+                <i32>::sse_encode(17, serializer);
+            }
+            crate::api::pipewire::ObjectType::Other(field0) => {
+                <i32>::sse_encode(18, serializer);
+                <String>::sse_encode(field0, serializer);
+            }
+            _ => {
+                unimplemented!("");
+            }
+        }
+    }
+}
+
+impl SseEncode for crate::api::pipewire::PipeWireMsg {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                crate::api::pipewire::PipeWireMsg::Print => 0,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
+    }
+}
+
+impl SseEncode for (String, String) {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <String>::sse_encode(self.0, serializer);
+        <String>::sse_encode(self.1, serializer);
+    }
+}
+
+impl SseEncode for u32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_u32::<NativeEndian>(self).unwrap();
+    }
+}
+
 impl SseEncode for u8 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -214,13 +652,6 @@ impl SseEncode for u8 {
 impl SseEncode for () {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {}
-}
-
-impl SseEncode for i32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
-    }
 }
 
 impl SseEncode for bool {

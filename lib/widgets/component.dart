@@ -111,8 +111,7 @@ class _InteractivityState extends ConsumerState<_Interactivity> {
 
                 ref.read(popupAnchorRectProvider.notifier).state = rect;
 
-                ref.read(popupSizeProvider.notifier).state =
-                    const Size(240, 140);
+                ref.read(popupSizeProvider.notifier).state = fdlsPopupSize;
 
                 ref.read(popupThemeProvider.notifier).state = Theme.of(context);
               } else if (!ref.read(popupExpandedProvider)) {
@@ -141,7 +140,7 @@ class _InteractivityState extends ConsumerState<_Interactivity> {
                 ref.read(popupExpandedProvider.notifier).state = true;
               }
 
-              ref.read(popupSizeProvider.notifier).state = const Size(480, 300);
+              ref.read(popupSizeProvider.notifier).state = fdlsPopupFullSize;
             },
       child: widget.child,
     );

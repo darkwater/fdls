@@ -1,6 +1,7 @@
 import 'package:fdls/constants.dart';
-import 'package:fdls/src/rust/api/simple.dart';
+import 'package:fdls/src/rust/api/pipewire.dart';
 import 'package:fdls/widgets/component.dart';
+import 'package:fdls/widgets/component_hover_popup.dart';
 import 'package:fdls/widgets/two_row.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -23,16 +24,48 @@ class AudioComponent extends ConsumerWidget {
     return Component(
       primaryColor: Colors.green,
       width: fdlsSmallComponentWidth,
+      popup: const _Popup(),
       child: GestureDetector(
         onHorizontalDragUpdate: (details) {},
         child: TwoRow(
-          top: Text(greet(name: "PipeWire")),
+          top: const Text("..."),
           icon: const Icon(Icons.volume_up),
           bottom: LinearProgressIndicator(
             value: 0.5,
             borderRadius: BorderRadius.circular(10),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _Popup extends ConsumerWidget {
+  const _Popup();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    pipewireSendMsg(msg: PipeWireMsg.print);
+    final objects = pipewireGetGlobals();
+    return ComponentHoverPopup(
+      icon: Icons.volume_up,
+      title: "Audio",
+      body: ListView.builder(
+        itemCount: objects.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(
+              objects[index]
+                      .props
+                      .entries
+                      .where((e) => e.key.endsWith("name"))
+                      .firstOrNull
+                      ?.value ??
+                  "???",
+            ),
+            subtitle: Text(objects[index].kind.toString()),
+          );
+        },
       ),
     );
   }
